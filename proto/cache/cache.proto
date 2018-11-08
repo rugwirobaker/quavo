@@ -1,0 +1,77 @@
+/**
+ * Package cache defines quavo an in memory caching service.
+*/
+
+
+syntax = "proto3";
+
+package cache;
+
+import "google/protobuf/empty.proto";
+
+/**
+ * Service for handling caching request
+ */
+service Cache{
+    /// Used to retrieve a key from the cache service.
+    rpc Get(GetRequest) returns (GetResponse){}
+
+    /// Used to set a new key from the cache service.
+    rpc Set(SetRequest) returns (SetResponse){}
+
+    /// Used to remove a key from the cache service.
+    rpc Unset(UnsetRequest) returns (UnsetResponse){}
+
+    /// Used tot delete all the values from the cache service.
+    rpc Flush (google.protobuf.Empty) returns (FlushResponse){};
+}
+
+/**
+ * Defines the Request to the Get method of Cache.
+ */
+message GetRequest{
+    string key=1; /// Unique value identifier.
+}
+
+/**
+ * Defines the return(Response) to the Get method of Cache.
+ */
+message GetResponse{
+    bytes value=2;  /// Value of a given key.
+}
+
+/**
+ * Defines the Request to the Set method of Cache.
+ */
+message SetRequest{
+    string key=1;  /// Unique value identifier.
+    bytes value=2; /// Value to be set.
+}
+
+/**
+ * Defines the return(Response) to the Set method of Cache.
+ */
+message SetResponse{
+    bool ok=1; ///Says whether value has been set or not.
+}
+
+/**
+ * Defines the Request to the Unset method of Cache.
+ */
+message UnsetRequest{
+    string key=1; /// Key to remove from cache.
+}
+
+/**
+ * Defines the return(Response) value to the Unset method of Cache.
+ */
+message UnsetResponse{
+    bool ok=1; /// Key was removed or not.
+}
+
+/**
+ * Defines the return(Response) to the Flush method of Cache.
+ */
+message FlushResponse{
+    bool ok=1; /// Cache was flushed or not
+}
