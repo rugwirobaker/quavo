@@ -14,3 +14,5 @@ Run `quavoctl --help`
 ## To generate docs run
 1. `docker pull pseudomuto/protoc-gen-doc` to install protoc-gen-doc.
 2. `make docs` to automate docs generation.
+
+Documentation [here](proto/docs/docs.md)
