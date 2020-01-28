@@ -9,6 +9,7 @@ Quavo is a proof of concept key-value store that uses protocol buffers via gRPC 
 3.  run `make install` to install the CLI tool (quavoclt).
 
 ## Basic help
+
 Run `quavoctl --help`
 
 ## To generate docs run
